@@ -3,8 +3,9 @@
   src: url(../fonts/PixelifySans-VariableFont_wght.ttf);
 }
 
+/* BACKGROUND COLOR */
 body {
-    background: #1576e6;
+    background: white;
   }
 
 body:after{
@@ -16,8 +17,9 @@ body:after{
   content: url(../img/insta-logo.webp) url(../img/linked-logo.png) url(../img/name-blue.png);
 }
 
+/* MAIN HEADER */
 .header-main{
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -28,6 +30,7 @@ body:after{
   z-index: 1000;
   }
 
+/* HEADER LIST */
 .header-main-menu{
   width: fit-content;
   height: 100%;
@@ -35,6 +38,7 @@ body:after{
   display: flex;
 }
 
+/* HEADER LOGO */
 .header-main-logo{
   width: 150px;
   height: 60px;
@@ -48,18 +52,27 @@ body:after{
   background-image: url(../img/name-blue.png)
 }
 
-.header-main-nav{
-  width: fit-content;
+/* NAVIGATION BAR */
+.header-main-nav {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
   height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .header-main-nav ul{
-  list-style: none;
+  display: flex;
+  align-items: center;   
+  height: 100%;          
+  margin: 0;
+  padding: 0;
 }
 
 .header-main-nav ul li{
-  display: inline;
-  float: left;
+  display: flex;
 }
 
 .header-main-nav ul li a{
@@ -90,10 +103,6 @@ body:after{
   color: #c83838;
 }
 
-.projects{
-  font-family: Pixel;
-}
-
 .wrapper{
   width: 100%;
 }
@@ -107,7 +116,7 @@ body:after{
   padding: 30px 30px 20px;
   font-family: Arial;
   font-size: 50px;
-  color: white;
+  color: black;
   line-height: 44px;
 }
 
@@ -115,7 +124,7 @@ body:after{
   padding: 0px 30px 20px;
   font-family: Arial;
   font-size: 16px;
-  color: #FFF;
+  color: black;
   line-height: 24px;
 }
 
