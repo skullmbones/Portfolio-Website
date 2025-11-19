@@ -114,6 +114,18 @@ body {
   background-image: url(../img/insta-logo.webp);
 }
 
+.header-main-sm-gh{
+  width: 20px;
+  height: 20px;
+  background-image: url(../img/github-black.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header-main-sm-gh:hover{
+  background-image: url(../img/github-color.png);
+}
+
 .wrapper {
   width: 100%;
   max-width: 1100px;
@@ -123,13 +135,15 @@ body {
   padding-top: 30px;
 }
 
+/* IMAGE AND INFO SECTION */
+
 .img-info{
   width: 100%;
 }
 
 .img-info h1{
-  margin-top: 70px;
   padding: 30px 30px 20px;
+  margin: 0;
   font-family: Arial;
   font-size: 50px;
   color: black;
@@ -138,14 +152,15 @@ body {
 
 .img-info p{
   padding: 0px 30px 20px;
+  margin: 0;
   font-family: Arial;
   font-size: 16px;
   color: black;
   line-height: 24px;
 }
 
-.img-pumpkin{
-  width: 100%;
+.img-headshot{
+  width: 50%;
 }
 
 /*
