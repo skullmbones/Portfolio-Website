@@ -3,46 +3,41 @@
   src: url(../fonts/PixelifySans-VariableFont_wght.ttf);
 }
 
-/* BACKGROUND COLOR */
+/* GLOBAL */
 body {
     background: white;
+    margin: 0;
+    padding: 0;
   }
-
-body:after{
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-  z-index: -1;
-  content: url(../img/insta-logo.webp) url(../img/linked-logo.png) url(../img/name-blue.png);
-}
 
 /* MAIN HEADER */
 .header-main{
-  position: relative;
+  position: sticky;
   top: 0;
-  left: 0;
   width: 100%;
   height: 60px;
   background-color: white;
   display: flex;
   justify-content: space-between;
+  align-items:center;
   z-index: 1000;
+  padding: 0 30px;     
+  margin: 0 auto;      
+  box-sizing: border-box; 
   }
 
 /* HEADER LIST */
 .header-main-menu{
-  width: fit-content;
-  height: 100%;
-  padding-left: 10px;
   display: flex;
+  align-items: center;
+  gap: 20px
 }
 
 /* HEADER LOGO */
 .header-main-logo{
   width: 150px;
   height: 60px;
-  margin-top: 15px;
+  margin-top: 20%;
   background-image: url(../img/name.png);
   background-repeat: no-repeat;
   background-size: 100%;
@@ -53,16 +48,6 @@ body:after{
 }
 
 /* NAVIGATION BAR */
-.header-main-nav {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); 
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
 .header-main-nav ul{
   display: flex;
   align-items: center;   
@@ -76,44 +61,77 @@ body:after{
 }
 
 .header-main-nav ul li a{
-  padding: 0 10px 0 10px;
+  padding: 0 10px;
   font-family: Pixel;
-  line-height: 30px;
+  line-height: 60px;
   text-decoration: none;
-  color: #1e1e1e;
-}
-
-.header-main-nav ul li a:hover{
-  color: #38ff42;
+  color: black;
 }
 
 .header-main-nav ul li a.resume:hover{
-  color: #8d47ff;
+  color: #0ce6f2;
 }
 
 .header-main-nav ul li a.projects:hover{
-  color: #38ff42;
+  color: #0098db;
 }
 
 .header-main-nav ul li a.music:hover{
-  color: #22a6c3;
+  color: #1e579c
 }
 
 .header-main-nav ul li a.about-me:hover{
-  color: #c83838;
+  color: #203562
 }
 
-.wrapper{
-  width: 100%;
+.header-main-sm{
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
+
+.header-main-sm-li{
+  width: 20px;
+  height: 20px;
+  background-image: url(../img/linked-black.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header-main-sm-li:hover{
+  background-image: url(../img/linked-logo.png);
+}
+
+.header-main-sm-in{
+  width: 20px;
+  height: 20px;
+  background-image: url(../img/insta-black.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header-main-sm-in:hover{
+  background-image: url(../img/insta-logo.webp);
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 30px;
+}
+
+/* IMAGE AND INFO SECTION */
 
 .img-info{
-  width: 100%;
+  width: 50%;
 }
 
 .img-info h1{
-  margin-top: 70px;
   padding: 30px 30px 20px;
+  margin: 0;
   font-family: Arial;
   font-size: 50px;
   color: black;
@@ -122,15 +140,18 @@ body:after{
 
 .img-info p{
   padding: 0px 30px 20px;
+  margin: 0;
   font-family: Arial;
   font-size: 16px;
   color: black;
   line-height: 24px;
 }
 
-.img-pumpkin{
-  width: 100%;
+.img-headshot{
+  width: 50%;
 }
+
+/*
 
 @media only screen and (min-width: 768px) {
   .img-arcade{
@@ -164,7 +185,7 @@ body:after{
     left: 0;
     width: 100%;
     height: 60px;
-    background-color: white;
+    background-color: black;
     display: flex;
     justify-content: space-between;
     z-index: 1000;
@@ -336,19 +357,6 @@ p {
     text-align: left;
     width: 100%;
   }
-  
-*/
-
-.img-music{
-  width: 1100px;
-  height: 200px;
-  background-image: url(img/music.png);
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-/*
 
 .menu{
     width: 100;

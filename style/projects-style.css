@@ -3,42 +3,41 @@
   src: url(../fonts/PixelifySans-VariableFont_wght.ttf);
 }
 
+/* GLOBAL */
 body {
-    background: #38c866;
+    background: white;
+    margin: 0;
+    padding: 0;
   }
 
-body:after{
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-  z-index: -1;
-  content: url(../img/insta-logo.webp) url(../img/linked-logo.png) url(../img/name-blue.png);
-}
-
+/* MAIN HEADER */
 .header-main{
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
   width: 100%;
   height: 60px;
   background-color: white;
   display: flex;
   justify-content: space-between;
+  align-items:center;
   z-index: 1000;
+  padding: 0 30px;     
+  margin: 0 auto;      
+  box-sizing: border-box; 
   }
 
+/* HEADER LIST */
 .header-main-menu{
-  width: fit-content;
-  height: 100%;
-  padding-left: 10px;
   display: flex;
+  align-items: center;
+  gap: 20px
 }
 
+/* HEADER LOGO */
 .header-main-logo{
   width: 150px;
   height: 60px;
-  margin-top: 15px;
+  margin-top: 20%;
   background-image: url(../img/name.png);
   background-repeat: no-repeat;
   background-size: 100%;
@@ -48,39 +47,80 @@ body:after{
   background-image: url(../img/name-blue.png)
 }
 
-.header-main-nav{
-  width: fit-content;
-  height: 100%;
-}
-
+/* NAVIGATION BAR */
 .header-main-nav ul{
-  list-style: none;
+  display: flex;
+  align-items: center;   
+  height: 100%;          
+  margin: 0;
+  padding: 0;
 }
 
 .header-main-nav ul li{
-  display: inline;
-  float: left;
+  display: flex;
 }
 
 .header-main-nav ul li a{
-  padding: 0 10px 0 10px;
+  padding: 0 10px;
   font-family: Pixel;
-  line-height: 30px;
+  line-height: 60px;
   text-decoration: none;
-  color: #1e1e1e;
+  color: black;
 }
 
-.header-main-nav ul li a:hover{
-  color: #38ff42;
+.header-main-nav ul li a.resume:hover{
+  color: #0ce6f2;
 }
 
-.projects{
-  font-family: Pixel;
-  font-size: 25px;
+.header-main-nav ul li a.projects:hover{
+  color: #0098db;
 }
 
-.wrapper{
+.header-main-nav ul li a.music:hover{
+  color: #1e579c
+}
+
+.header-main-nav ul li a.about-me:hover{
+  color: #203562
+}
+
+.header-main-sm{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-main-sm-li{
+  width: 20px;
+  height: 20px;
+  background-image: url(../img/linked-black.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header-main-sm-li:hover{
+  background-image: url(../img/linked-logo.png);
+}
+
+.header-main-sm-in{
+  width: 20px;
+  height: 20px;
+  background-image: url(../img/insta-black.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.header-main-sm-in:hover{
+  background-image: url(../img/insta-logo.webp);
+}
+
+.wrapper {
   width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 30px;
 }
 
 .img-info{
@@ -92,7 +132,7 @@ body:after{
   padding: 30px 30px 20px;
   font-family: Arial;
   font-size: 50px;
-  color: white;
+  color: black;
   line-height: 44px;
 }
 
@@ -100,13 +140,15 @@ body:after{
   padding: 0px 30px 20px;
   font-family: Arial;
   font-size: 16px;
-  color: #FFF;
+  color: black;
   line-height: 24px;
 }
 
 .img-pumpkin{
   width: 100%;
 }
+
+/*
 
 @media only screen and (min-width: 768px) {
   .img-arcade{
@@ -140,7 +182,7 @@ body:after{
     left: 0;
     width: 100%;
     height: 60px;
-    background-color: white;
+    background-color: black;
     display: flex;
     justify-content: space-between;
     z-index: 1000;
@@ -227,26 +269,24 @@ body:after{
   
   .projects{
     font-family: Pixel;
-    font-size: 25px;
   }
   
   .wrapper{
-    width: 875px;
+    width: 1000px;
   }
   
   .img-info{
     margin-top:auto;
+    width: 50%;
+    float: right;
   }
   
   .img-info h1{
-    padding: 20px 20px 20px 30px;
-    background-color:#1e1e1e;
+    padding: 20px 0px 0px 30px;
   }
   
   .img-info p{
-    padding: 10px 0px 10px 30px;
-    background-color:white;
-    color:#1e1e1e;
+    padding: 0px 0px 0px 30px;
   }
   
   .img-pumpkin{
@@ -314,19 +354,6 @@ p {
     text-align: left;
     width: 100%;
   }
-  
-*/
-
-.img-music{
-  width: 1100px;
-  height: 200px;
-  background-image: url(img/music.png);
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-/*
 
 .menu{
     width: 100;
