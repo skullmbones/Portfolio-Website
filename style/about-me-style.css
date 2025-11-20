@@ -1,6 +1,6 @@
 @font-face {
-  font-family: Pixel;
-  src: url(../fonts/PixelifySans-VariableFont_wght.ttf);
+  font-family: Terminus;
+  src: url(../fonts/TerminusTTF-4.49.3.ttf);
 }
 
 /* GLOBAL */
@@ -62,7 +62,7 @@ body {
 
 .header-main-nav ul li a{
   padding: 0 10px;
-  font-family: Pixel;
+  font-family: Terminus;
   line-height: 60px;
   text-decoration: none;
   color: black;
@@ -144,7 +144,7 @@ body {
 .img-info h1{
   padding: 30px 30px 20px;
   margin: 0;
-  font-family: Arial;
+  font-family: Terminus;
   font-size: 50px;
   color: black;
   line-height: 44px;
@@ -153,14 +153,14 @@ body {
 .img-info p{
   padding: 0px 30px 20px;
   margin: 0;
-  font-family: Arial;
+  font-family: Terminus;
   font-size: 16px;
   color: black;
   line-height: 24px;
 }
 
 .img-headshot{
-  width: 50%;
+  width: 40%;
 }
 
 /*
