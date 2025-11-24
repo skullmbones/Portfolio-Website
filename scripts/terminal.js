@@ -7,9 +7,6 @@ const closeBtn = document.getElementById("terminal-close");
 let stopTyping = false;
 
 const lines = [
-  "michael.babboni@portfolio:~$ ./about",
-  "Loading profile...",
-  "",
   "Name: Michael Babboni",
   "Major: Computer Science",
   "Minor: Music Technology",

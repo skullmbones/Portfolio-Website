@@ -5,34 +5,37 @@
   <head>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | Michael Babboni</title>
+    <title>About | Michael Babboni</title>
+    <link rel="stylesheet" href="../style/home-style.css">
     <link rel="stylesheet" href="../style/projects-style.css">
 
   </head>
 
   <body>
 
+    <!-- HEADER/NAVIGATION -->
     <header class="header-main">
 
       <div class="header-main-menu">
-
-        <a href="../index.html">
-          <div class="header-main-logo"></div>
-        </a>
 
         <!-- NAVIGATION MENU -->
         <nav class="header-main-nav">
           <ul>
             <!-- <li><a class="resume" href="html/resume.html">RESUME</a></li> -->
-            <li><a class="projects" href="projects.html">PROJECTS</a></li>
+            <li><a class="header-main-logo">michaelbabboni@Portfolio</a></li>
+            <li><a class="projects" href="../index.html">projects</a></li>
+            <li><a class="cd">% cd</a></li>
+            <li><a class="adventure_catalyst" href="adventure-catalyst.html">adventure_catalyst</a></li>
+            <li><a class="android_app" href="android-app.html">android_app</a></li>
+            <li><a class="website" href="website.html">website</a></li>
+
             <!-- <li><a class="music" href="html/music.html">MUSIC</a></li> -->
-            <li><a class="about-me" href="about-me.html">ABOUT</a></li>
           </ul>
         </nav>
 
       </div>
 
-      <!-- SOCIAL MEDIA IN HEADER -->
+      <!-- SOCIAL MEDIA IN HEADER 
       <div class="header-main-sm">
         <a href="https://www.linkedin.com/in/michael-babboni-34567231a/" target="_blank">
           <div class="header-main-sm-li"></div>
@@ -42,18 +45,44 @@
         </a>
       </div>
 
+      -->
+
     </header>
-
-      <div class="wrapper">
-        <article class="img-info">
-            <p>I have worked on a wide variety of different projects, from making apps, to building games.</p>
-          <h1>Games</h1>
-          <h1>Software</h1>
-        </article>
+  
+    <!-- HERO 
+    <main>
+      <div class="main-intro">
+        <h1>I'm Michael</h1>
+        <p>a computer science student <br> aspiring to become a professional <br>software engineer and game developer.</p>
+        <a href="#">My Work</a>
       </div>
-    
-    </body>
+      <div class="main-quotes">
+        <p>Random text here<br>hello<br>nevermind</p>
+        <p>Random text here<br>hello<br>nevermind</p>
+      </div>
+    </main>
 
-  </head>
+    -->
+
+    <!-- HERO 
+    <div class="wrapper">
+      <article class="img-info">
+        <h1>I'm Michael,</h1>
+          <p>a computer science student aspiring to become a professional software engineer and game developer.</p>
+      </article>
+    </div>
+  -->
+
+    <!-- TERMINAL OVERLAY -->
+    <div id="terminal-overlay">
+      <div id="terminal">
+        <div id="terminal-close">✕</div>
+        <pre id="terminal-text"></pre>
+      </div>
+    </div>
+
+<script src="../scripts/terminal.js"></script>
+  
+  </body>
 
 </html>

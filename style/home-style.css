@@ -5,7 +5,7 @@
 
 /* GLOBAL */
 body {
-    background: rgb(37, 37, 37);
+    background:  rgb(22, 22, 22);
     margin: 0;
     padding: 0;
   }
@@ -24,7 +24,6 @@ body {
   padding: 0 30px;     
   margin: 0 auto;      
   box-sizing: border-box; 
-  box-shadow: 0 0 3px #00ff55;
   }
 
 /* HEADER LIST */
@@ -36,14 +35,10 @@ body {
 
 /* HEADER LOGO */
 .header-main-logo{
-  font-size: 24px;
+  font-size: 17px;
   word-spacing: .5px;
   font-family: Terminus;
   color: white;
-}
-
-.header-main-logo:hover{
-  color: #00ff55;
 }
 
 /* NAVIGATION BAR */
@@ -55,24 +50,27 @@ body {
   padding: 0;
 }
 
+
 .header-main-nav ul li{
   display: flex;
 }
 
+
 .header-main-nav ul li a{
-  padding: 0 10px;
+  padding: 0 4.25px;
   font-family: Terminus;
+  font-size: 17px;
   line-height: 60px;
   text-decoration: none;
   color: white;
 }
 
-.header-main-nav ul li a.resume:hover{
-  color: #0ce6f2;
+.header-main-nav ul li a.header-main-logo{
+  color: #8eecf1;
 }
 
 .header-main-nav ul li a.projects:hover{
-  color: #00ff55;
+  color: #4856d6;
 }
 
 .header-main-nav ul li a.music:hover{
@@ -80,7 +78,7 @@ body {
 }
 
 .header-main-nav ul li a.about-me:hover{
-  color: #00ff55;
+  color: #1288b7;
 }
 
 .header-main-sm{
@@ -137,9 +135,9 @@ body {
 main {
   min-height: calc(100vh - 60px);
   width: 100%;
-  background-color: rgb(37, 37, 37);
+  background-color:  rgb(22, 22, 22);
   margin-top: 0;
-  background-image: url(../img/headshot.jp), url(../img/binary2.png);
+  background-image: url(../img/headshot.jp), url();
   background-size: 90vh, cover;
   background-repeat: no-repeat;
   background-position: bottom, center;
@@ -233,10 +231,10 @@ main .main-quotes p{
 #terminal {
   width: 80%;
   max-width: 800px;
-  background: #0e0e0e;
+  background: #20adc3; /* #1d1d1d is a dark terminal-like color */
   border-radius: 10px;
   padding: 20px;
-  color: #00ff55;
+  color: white;
   font-family: Terminus;
   font-size: 1.05rem;
   position: relative;
@@ -253,7 +251,7 @@ main .main-quotes p{
   right: 14px;
   font-size: 22px;
   cursor: pointer;
-  color: #00ff55;
+  color: white;
   user-select: none;
 }
 
