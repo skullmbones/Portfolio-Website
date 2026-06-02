@@ -1,0 +1,28 @@
+#desktop {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 60px);
+  overflow: hidden;
+}
+
+.window {
+  position: absolute;
+  width: 420px;
+  background: rgb(22, 22, 22);
+  border: 1px solid #33ff33;
+  color: white;
+  font-family: Terminus;
+  box-shadow: 0 0 10px rgba(0,0,0,0.7);
+}
+
+.window-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background: #111;
+  cursor: move;
+}
+
+.window-body {
+  padding: 12px;
+}

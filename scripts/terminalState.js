@@ -1,3 +1,14 @@
+window.terminalState = {
+  cwd: "~",
+
+  set(path) {
+    this.cwd = path;
+    renderTerminalLine();
+  }
+};
+
+/*
+
 const aboutBtn = document.getElementById("about-btn");
 const overlay = document.getElementById("terminal-overlay");
 const terminal = document.getElementById("terminal");
@@ -67,3 +78,5 @@ closeBtn.addEventListener("click", () => {
       overlay.style.display = "none";
     }, 280); // match transition time
   });
+
+  */

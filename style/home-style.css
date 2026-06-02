@@ -22,6 +22,7 @@ body {
   z-index: 1000;     
   margin: 0 auto;      
   box-sizing: border-box; 
+  padding: 30px 40px;
   }
 
 /* HEADER LIST */
@@ -39,233 +40,98 @@ body {
 }
 
 /* NAVIGATION BAR */
-.header-main-nav ul{
+/* ============================= */
+/* TERMINAL NAV BAR (NEW MODEL)  */
+/* ============================= */
+
+.header-main-nav {
+  width: 100%;
   display: flex;
-  list-style: none;
-  align-items: center;  
-  gap: 10px; 
-}
-
-.header-main-nav ul li{
-  flex-shrink: 0;
-}
-
-.header-main-nav ul li a{
-  display: inline-block;
-  text-decoration: none;
-  width: fit-content;
-  position: relative;
+  align-items: center;
   font-family: Terminus;
   font-size: 17px;
-  line-height: 30px;
   color: white;
+  white-space: nowrap;
 }
 
-.header-main-nav ul li a.header-main-logo{
-  color: #8eecf1;
+/* Single terminal line */
+#terminal-line {
+  display: inline;
+  white-space: nowrap;
 }
 
-.header-main-nav ul li a.projects:hover{
-  color: #4856d6;
+#terminal-line {
+  display: inline;
+  white-space: nowrap;
 }
 
-.header-main-nav ul li a.music:hover{
-  color: #1e579c;
-}
-
-.header-main-nav ul li a.about-me:hover{
-  color: #2095c3;
-}
-
-.header-main-sm{
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.header-main-sm-li{
-  width: 20px;
-  height: 20px;
-  background-image: url(../img/linked-black.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.header-main-sm-li:hover{
-  background-image: url(../img/linked-logo.png);
-}
-
-.header-main-sm-in{
-  width: 20px;
-  height: 20px;
-  background-image: url(../img/insta-black.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.header-main-sm-in:hover{
-  background-image: url(../img/insta-logo.webp);
-}
-
-.header-main-sm-gh{
-  width: 20px;
-  height: 20px;
-  background-image: url(../img/github-black.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.header-main-sm-gh:hover{
-  background-image: url(../img/github-color.png);
-}
-
-.wrapper {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  align-items: flex-start;
-  padding-top: 30px;
-}
-
-main {
-  min-height: calc(100vh - 60px);
-  width: 100%;
-  background-color:  rgb(22, 22, 22);
-  margin-top: 0;
-  background-image: url(../img/headshot.jp), url();
-  background-size: 90vh, cover;
-  background-repeat: no-repeat;
-  background-position: bottom, center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-main .main-intro h1{
-  font-family: Terminus;
-  font-size: 90px;
-  color: white;
-}
-
-main p{
-  font-family: Terminus;
-  font-size: 18px;
-  color: white;
-  line-height: 20px;
-}
- 
-main a{
-  font-family: Terminus;
-  font-size: 18px;
-  color: white;
-  display: block;
-  background-color: rgb(22, 22, 22);
-  border-radius: 10px;
-  box-sizing: border-box; 
-  box-shadow: 0 0 3px #00ff55;
-  padding: 10px 20px;
-  margin-top: 30px;
-  width: fit-content;
-}
-
-main a:hover{
-  color: #00ff55;
-}
-
-main .main-quotes p{
-  font-family: Terminus;
-  border-left: 4px solid white;
-  font-size: 16px;
-  color: white;
-  line-height: 24px; 
-  padding-left: 20px;
-  margin: 40px 0 0 0;
-}
-
-/* IMAGE AND INFO SECTION */
-
-.img-info{
-  width: 50%;
-}
-
-.img-info h1{
-  padding: 30px 30px 20px;
+#terminal-line span {
+  display: inline;
   margin: 0;
-  font-family: Terminus;
-  font-size: 50px;
-  color: black;
-  line-height: 44px;
+  padding: 0;
 }
 
-.img-info p{
-  padding: 0px 30px 20px;
-  margin: 0;
-  font-family: Terminus;
-  font-size: 16px;
-  color: black;
-  line-height: 24px;
-}
-
-.img-headshot{
-  width: 50%;
-}
-
-/* TERMINAL OVERLAY */
-#terminal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 99999;
-}
-
-#terminal {
-  width: 80%;
-  max-width: 800px;
-  background: #20adc3; /* #1d1d1d is a dark terminal-like color */
-  border-radius: 10px;
-  padding: 20px;
-  color: white;
-  font-family: Terminus;
-  font-size: 1.05rem;
+#desktop {
   position: relative;
+  z-index: 10;
 }
 
-#terminal-text {
-  white-space: pre-wrap;
-  font-family: Terminus;
-}
 
-#terminal-close {
-  position: absolute;
-  top: 10px;
-  right: 14px;
-  font-size: 22px;
+/* Prompt / path */
+.path {
+  color: #8eecf1;
   cursor: pointer;
-  color: white;
   user-select: none;
 }
 
-#terminal-close:hover {
-  color: #ff5555;
+.path:hover {
+  color:#ff5555;
 }
 
-#terminal {
-  transform: translateY(-20px) scale(0.9);
-  opacity: 0;
-  transition: transform 0.28s cubic-bezier(.16, .84, .44, 1),
-              opacity 0.25s ease;
+/* Directories */
+.dir {
+  color: #2095c3;
+  cursor: pointer;
 }
 
-#terminal.open {
-  transform: translateY(0) scale(1);
-  opacity: 1;
+.dir:hover {
+  color: #4856d6;
 }
+
+/* Executables */
+.exec {
+  color: #4856d6;
+  cursor: pointer;
+}
+
+.exec:hover {
+  color: #00ff55;
+}
+
+#terminal-output {
+  position: absolute;
+  font-family: Terminus;
+  font-size: 16px;
+  color: white;
+  padding: 10px 40px;
+  line-height: 22px;
+  z-index: 1;
+}
+
+.terminal-log {
+  white-space: pre-wrap;
+}
+
+.log-loading {
+  color: #8eecf1;
+}
+
+.window {
+  position: absolute;
+}
+
+
+
 /*
 
 @media only screen and (min-width: 768px) {
