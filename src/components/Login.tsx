@@ -9,7 +9,12 @@ function Login({ onLogin }: { onLogin: () => void }) {
     e.preventDefault();
 
     if (password.trim() === "" || !Number.isFinite(Number(password))) {
-      setError("Incorrect password!");
+      setError("Incorrect passwrord!");
+      return;
+    }
+
+    if (String(password).length !== 4) {
+      setError("Please enter a 4-digit PIN!");
       return;
     }
 
@@ -23,7 +28,7 @@ function Login({ onLogin }: { onLogin: () => void }) {
         <div className="login-header">
           <img src="/img/headshot2026.png" alt="Profile Picture" className="profile-pic" />
           <h1>Michael Babboni</h1>
-          <form className="login-form" onSubmit={handleSubmit}>
+          <form noValidate className="login-form" onSubmit={handleSubmit}>
             <input
               type="password"
               inputMode="numeric"
@@ -31,9 +36,9 @@ function Login({ onLogin }: { onLogin: () => void }) {
               maxLength={4}
               placeholder="PIN"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value.replace(/\D/g, ""))}
             />
-            <button type="submit">=</button>
+            <button type="submit">→</button>
           </form>
         </div>
         {error && <p className="login-error">{error}</p>}
