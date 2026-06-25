@@ -1,6 +1,7 @@
 html, body {
   margin: 0;
   height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 }
 
 #root {
@@ -8,14 +9,23 @@ html, body {
 }
 
 .desktop {
-    background-image: url("/img/skullglitch.jpg");
+    background: linear-gradient(135deg, rgba(0, 128, 128, 0.6), rgba(0, 128, 128, 0.6)), url("/img/skullglitch.jpg");
     background-size: cover;
     background-position: center;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.desktop::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
 }
 
 .desktop-area {
@@ -25,5 +35,6 @@ html, body {
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: calc(100vh - 48px);
   text-align: center;
 }

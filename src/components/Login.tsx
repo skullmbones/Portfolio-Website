@@ -9,7 +9,7 @@ function Login({ onLogin }: { onLogin: () => void }) {
     e.preventDefault();
 
     if (password.trim() === "" || !Number.isFinite(Number(password))) {
-      setError("Incorrect passwrord!");
+      setError("Incorrect password!");
       return;
     }
 
@@ -26,7 +26,7 @@ function Login({ onLogin }: { onLogin: () => void }) {
     <div className="login">
       <main className="login-area">
         <div className="login-header">
-          <img src="/img/headshot2026.png" alt="Profile Picture" className="profile-pic" />
+          <img src="/img/headshot2026.png" alt="Profile Picture" className="profile-pic" draggable="false" />
           <h1>Michael Babboni</h1>
           <form noValidate className="login-form" onSubmit={handleSubmit}>
             <input
@@ -40,8 +40,8 @@ function Login({ onLogin }: { onLogin: () => void }) {
             />
             <button type="submit">→</button>
           </form>
+          {error && <p className="login-error">{error}</p>}
         </div>
-        {error && <p className="login-error">{error}</p>}
       </main>
     </div>
   );
