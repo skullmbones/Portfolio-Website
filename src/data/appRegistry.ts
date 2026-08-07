@@ -1,23 +1,21 @@
-export type AppId = "terminal" | "projects" | "music" | "about" | "resume";
-
 export const appRegistry = [
-    {
-    id: "about",
+  {
+    id: "about" as const,
     title: "About Me",
     icon: "👤",
   },
   {
-    id: "terminal",
+    id: "terminal" as const,
     title: "Terminal",
     icon: "⌨️",
   },
   {
-    id: "music",
+    id: "music" as const,
     title: "Music",
     icon: "🎵",
   },
   {
-    id: "docs",
+    id: "docs" as const,
     title: "Documents",
     icon: "📄",
   },
