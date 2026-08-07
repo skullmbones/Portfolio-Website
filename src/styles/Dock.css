@@ -1,0 +1,99 @@
+.dock {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 48px;
+    z-index: 10;
+    background: linear-gradient(to bottom, #FFFFFF 0%, #F8F8F8 100%);
+    border-top: 1px solid #D0D0D0;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    padding: 4px 4px;
+}
+
+.dock-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  padding: 0 4px;
+}
+
+.dock-apps {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  height: 100%;
+  z-index: 1;
+}
+
+.dock-app-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dock-app-wrapper .minimized-indicator {
+  width: 4px;
+  height: 4px;
+  background: #000000;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -6px;
+}
+
+.dock-apps button {
+  height: 40px;
+  width: 44px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(to bottom, #FFFFFF, #F5F5F5);
+  border: 1px solid #D0D0D0;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 18px;
+  color: #000000;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.dock-apps button.minimized {
+  background: linear-gradient(to bottom, #0078D7, #005BA3);
+  color: #ffffff;
+  border-color: #005BA3;
+  box-shadow: 0 2px 6px rgba(0, 120, 215, 0.3);
+}
+
+.dock-apps button:hover {
+  background: linear-gradient(to bottom, #F8F8F8, #EFEFEF);
+  border-color: #0078D7;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
+}
+
+.dock-apps button:active {
+  background: linear-gradient(to bottom, #0078D7, #005BA3);
+  color: #ffffff;
+  transform: translateY(0);
+}
+
+.dock time {
+  margin-left: auto;
+  padding-right: 8px;
+  z-index: 2;
+  color: #424242;
+  font-weight: 500;
+  font-size: 12px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
