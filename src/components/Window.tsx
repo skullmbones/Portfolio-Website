@@ -30,7 +30,14 @@ function Window({
   const [isDragging, setIsDragging] = useState(false);
   const [isResizing, setIsResizing] = useState<string | null>(null);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
-  const [resizeStart, setResizeStart] = useState({ x: 0, y: 0, width: 0, height: 0 });
+  const [resizeStart, setResizeStart] = useState({
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0,
+    left: 0,
+    top: 0,
+  });
 
   // Ensure size has valid values
   const validSize = {
@@ -62,6 +69,8 @@ function Window({
       y: e.clientY,
       width: validSize.width,
       height: validSize.height,
+      left: position.x,
+      top: position.y,
     });
   };
 
@@ -109,8 +118,8 @@ function Window({
 
       let newWidth = resizeStart.width;
       let newHeight = resizeStart.height;
-      let newX = position.x;
-      let newY = position.y;
+      let newX = resizeStart.left;
+      let newY = resizeStart.top;
 
       const minWidth = 300;
       const minHeight = 150;
@@ -118,56 +127,24 @@ function Window({
       const screenHeight = window.innerHeight;
 
       if (isResizing.includes("e")) {
-        newWidth = Math.max(minWidth, resizeStart.width + deltaX);
-        newWidth = Math.min(newWidth, screenWidth - newX);
+        newWidth = Math.max(minWidth, Math.min(resizeStart.width + deltaX, screenWidth - resizeStart.left));
       }
       if (isResizing.includes("s")) {
-        newHeight = Math.max(minHeight, resizeStart.height + deltaY);
-        newHeight = Math.min(newHeight, screenHeight - newY);
+        newHeight = Math.max(minHeight, Math.min(resizeStart.height + deltaY, screenHeight - resizeStart.top));
       }
       if (isResizing.includes("w")) {
-        // Left side resize: adjust left edge
-        newX = position.x + deltaX;
-        newWidth = resizeStart.width - deltaX;
-        
-        // Ensure width stays at minimum
-        if (newWidth < minWidth) {
-          newWidth = minWidth;
-          newX = position.x + resizeStart.width - minWidth;
-        }
-        
-        // Ensure X doesn't go negative
-        if (newX < 0) {
-          newWidth = resizeStart.width + position.x;
-          newX = 0;
-        }
-        
-        // Ensure doesn't go off right side
-        if (newX + newWidth > screenWidth) {
-          newWidth = screenWidth - newX;
-        }
+        const nextLeft = resizeStart.left + deltaX;
+        const maxLeft = resizeStart.left + resizeStart.width - minWidth;
+        newX = Math.max(0, Math.min(nextLeft, maxLeft));
+        newWidth = Math.max(minWidth, resizeStart.width - (newX - resizeStart.left));
+        newWidth = Math.min(newWidth, screenWidth - newX);
       }
       if (isResizing.includes("n")) {
-        // Top side resize: adjust top edge
-        newY = position.y + deltaY;
-        newHeight = resizeStart.height - deltaY;
-        
-        // Ensure height stays at minimum
-        if (newHeight < minHeight) {
-          newHeight = minHeight;
-          newY = position.y + resizeStart.height - minHeight;
-        }
-        
-        // Ensure Y doesn't go negative
-        if (newY < 0) {
-          newHeight = resizeStart.height + position.y;
-          newY = 0;
-        }
-        
-        // Ensure doesn't go off bottom
-        if (newY + newHeight > screenHeight) {
-          newHeight = screenHeight - newY;
-        }
+        const nextTop = resizeStart.top + deltaY;
+        const maxTop = resizeStart.top + resizeStart.height - minHeight;
+        newY = Math.max(0, Math.min(nextTop, maxTop));
+        newHeight = Math.max(minHeight, resizeStart.height - (newY - resizeStart.top));
+        newHeight = Math.min(newHeight, screenHeight - newY);
       }
 
       onSizeChange(newWidth, newHeight);

@@ -29,24 +29,37 @@ function Desktop({ onLogout }: { onLogout: () => void }) {
 
   // Load window state from localStorage on mount
   useEffect(() => {
+    const handleOpenApp = (event: Event) => {
+      const customEvent = event as CustomEvent<{ appId?: AppId }>;
+      if (customEvent.detail?.appId) {
+        handleAppClick(customEvent.detail.appId);
+      }
+    };
+
+    window.addEventListener("open-app", handleOpenApp);
+
     const saved = localStorage.getItem("windowState");
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        
+
         const validatedState = {
           about: parsed.about?.position && parsed.about?.size ? { ...parsed.about } : undefined,
           terminal: parsed.terminal?.position && parsed.terminal?.size ? { ...parsed.terminal } : undefined,
           music: parsed.music?.position && parsed.music?.size ? { ...parsed.music } : undefined,
           docs: parsed.docs?.position && parsed.docs?.size ? { ...parsed.docs } : undefined,
         };
-        
+
         setOpenWindows(validatedState);
       } catch (e) {
         console.error("Failed to load window state:", e);
         localStorage.removeItem("windowState");
       }
     }
+
+    return () => {
+      window.removeEventListener("open-app", handleOpenApp);
+    };
   }, []);
 
   // Save window state to localStorage whenever it changes
