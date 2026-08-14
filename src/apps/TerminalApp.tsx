@@ -1,4 +1,4 @@
-import { useState, ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 
 type TerminalMode = "main" | "webdev" | "portfolio" | "jlc" | "gamedev" | "adventure_catalyst" | "traffic_jam"| "appdev" | "rooted" | "scary_burger";
 
