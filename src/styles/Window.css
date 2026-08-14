@@ -120,25 +120,25 @@
 /* Terminal Styles */
 .terminal-content {
   background: #000000;
-  color: #00ff00;
+  color: #efefef;
   font-family: 'Courier New', monospace;
-  font-size: 12px;
-  padding: 8px;
+  font-size: 13px;
+  padding: 12px;
   height: 100%;
   overflow-y: auto;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
 }
 
 .terminal-input-row {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 4px;
+  gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   width: 100%;
   flex-shrink: 0;
 }
@@ -146,7 +146,7 @@
 .terminal-output {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
   text-align: left;
   gap: 12px;
   width: 100%;
@@ -154,50 +154,55 @@
 
 .terminal-output p {
   margin: 3px 0;
-  line-height: 1.5;
+  line-height: 1.6;
+  color: #efefef;
 }
 
 .terminal-history-entry {
-  border-top: 1px solid rgba(0, 255, 0, 0.2);
+  border-top: 1px solid rgba(0, 255, 0, 0.08);
   padding-top: 10px;
   width: 100%;
-  padding-bottom: 4px;
+  padding-bottom: 6px;
 }
 
 .terminal-command {
-  color: #00ff00;
+  color: #efefef;
+  font-weight: 700;
 }
 
 .terminal-options {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
 .terminal-link {
   background: transparent;
   border: none;
-  color: #00ff00;
+  color: #efefef;
   font-family: 'Courier New', monospace;
-  font-size: 12px;
+  font-size: 13px;
   padding: 0;
   cursor: pointer;
 }
 
 .terminal-link:hover {
-  color: #ffffff;
+  opacity: 0.6;
   text-decoration: underline;
 }
 
 .terminal-link-active {
-  color: #ff4d4d;
-  text-decoration: underline;
+  text-decoration: none;
+}
+
+.terminal-link-active:hover {
+  color: #ff8b8b;
 }
 
 .terminal-command-link {
   background: transparent;
   border: none;
-  color: #00ff00;
+  color: #efefef;
   font: inherit;
   padding: 0;
   cursor: pointer;
@@ -205,14 +210,46 @@
 }
 
 .terminal-command-link:hover {
-  color: #ffffff;
+  opacity: 0.6;
+}
+
+.terminal-command-link-active {
   text-decoration: none;
 }
 
-.terminal-command-link-back:hover {
-  color: #ff4d4d;
-  text-decoration: none;
+.terminal-command-link-active:hover {
+  color: #ff8b8b;
 }
+
+/* Top-level option colors */
+.terminal-command-link.webdev { color: #ffd86b; }
+.terminal-command-link.gamedev { color: #69389e; }
+.terminal-command-link.appdev { color: #5b8bf3; }
+
+/* Subpath colors */
+.terminal-command-link.adventure_catalyst { color: #66fff3; }
+.terminal-command-link.traffic_jam { color: #ff94f4; }
+.terminal-command-link.rooted { color: #508b5d; }
+.terminal-command-link.scary_burger { color: #e36251; }
+.terminal-command-link.portfolio { color: #72aca8; }
+.terminal-command-link.jlc { color: #fc5959; }
+
+.terminal-url {
+  color: #647fea;
+  text-decoration: underline;
+}
+
+.terminal-url:hover {
+  opacity: 0.6;
+}
+
+/* Project title coloring */
+.terminal-output .project-title.adventure_catalyst { color: #66fff3; font-weight: 700; }
+.terminal-output .project-title.traffic_jam { color: #ff94f4; font-weight: 700; }
+.terminal-output .project-title.rooted { color: #508b5d; font-weight: 700; }
+.terminal-output .project-title.scary_burger { color: #e36251; font-weight: 700; }
+.terminal-output .project-title.portfolio { color: #72aca8; font-weight: 700; }
+.terminal-output .project-title.jlc { color: #fc5959; font-weight: 700; }
 
 /* Resize Handle Styles */
 .resize-handle {
