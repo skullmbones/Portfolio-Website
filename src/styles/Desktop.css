@@ -1,81 +1,571 @@
-html, body {
-  margin: 0;
-  height: 100%;
-  font-family: 'MS Sans Serif', Arial, sans-serif;
-}
-
-#root {
-  height: 100%;
-}
-
 .desktop {
-    background: linear-gradient(135deg, rgba(0, 128, 128, 0.6), rgba(0, 128, 128, 0.6)), url("/img/skullglitch.jpg");
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  isolation: isolate;
+  background: #008080;
+}
+
+.desktop::before,
+.desktop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: none;
 }
 
 .desktop::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
+  z-index: -1;
+  opacity: 0.13;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.28) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.22) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(to bottom, black, transparent 82%);
+}
+
+.desktop::after {
+  z-index: -1;
+  background:
+    radial-gradient(circle at center, transparent 38%, rgba(0, 0, 0, 0.48) 115%),
+    linear-gradient(to bottom, rgba(1, 11, 16, 0.04), rgba(1, 11, 16, 0.38));
 }
 
 .desktop-area {
-  flex: 1;
+  position: relative;
+  width: 100%;
+  height: calc(100dvh - var(--taskbar-height));
+  padding: 14px;
+  background-color: #008080;
+  background-image: url("/img/skullglitch.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: screen;
+  text-align: center;
+}
+
+.desktop-shortcuts {
+  position: absolute;
+  top: 18px;
+  left: 16px;
+  z-index: 1;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(4, minmax(94px, auto));
+  gap: 8px 14px;
+  align-content: start;
+  justify-content: start;
+}
+
+.desktop-shortcut {
+  width: 88px;
+  min-height: 90px;
+  padding: 7px 5px 6px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: #ffffff;
+  cursor: default;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
-  height: calc(100vh - 48px);
-  text-align: center;
-  position: relative;
-  padding: 8px;
+  gap: 6px;
+  font-family: var(--font-ui);
+  text-decoration: none;
+  transition: background 120ms ease, border-color 120ms ease;
 }
 
-.logout-btn {
+.desktop-shortcut:hover,
+.desktop-shortcut:focus-visible {
+  border-color: #d9ffff;
+  outline: 1px dotted #ffffff;
+  outline-offset: -3px;
+  background: #006e6e;
+}
+
+.desktop-shortcut:active {
+  border-color: #ffffff;
+  background: #005b5b;
+}
+
+.desktop-shortcut-icon {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 2px solid;
+  border-color: #ffffff #484848 #484848 #ffffff;
+  border-radius: 0;
+  background: #c0c0c0;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+  color: #174a4b;
+  font-family: var(--font-heading);
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.desktop-shortcut-icon::after {
+  display: none;
+}
+
+.desktop-shortcut[data-app-id="terminal"] .desktop-shortcut-icon {
+  color: #72efb3;
+  font-family: var(--font-mono);
+  font-size: 20px;
+  background: #101818;
+}
+
+.desktop-shortcut[data-app-id="music"] .desktop-shortcut-icon {
+  color: #004f50;
+  font-size: 36px;
+  background: #79b9b7;
+}
+
+.desktop-shortcut[data-app-id="docs"] .desktop-shortcut-icon {
+  color: #087478;
+  font-size: 33px;
+  background: #dfdfdf;
+}
+
+.desktop-shortcut[data-app-id="email"] .desktop-shortcut-icon {
+  color: #f8ffff;
+  font-family: var(--font-ui);
+  font-size: 31px;
+  background: #147d7d;
+  text-shadow: 1px 1px 0 #004b4b;
+}
+
+.desktop-trash-shortcut {
   position: absolute;
-  top: 16px;
   right: 16px;
-  padding: 7px 16px;
-  background: linear-gradient(to bottom, #FFFFFF, #F5F5F5);
-  color: #0078D7;
-  border: 1px solid #D0D0D0;
+  bottom: 16px;
+  z-index: 2;
+}
+
+.desktop-shortcut[data-app-id="trash"] .desktop-shortcut-icon {
+  overflow: visible;
+  background: #d9e3e1;
+  color: #126c69;
+}
+
+.trash-can-art {
+  position: relative;
+  width: 30px;
+  height: 34px;
+  margin-top: 5px;
+  display: grid;
+  place-items: center;
+  border: 2px solid;
+  border-color: #ffffff #4c5858 #4c5858 #ffffff;
+  background: #b8ccca;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: inset 1px 1px 0 #edf6f5;
+}
+
+.trash-can-art::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: -4px;
+  width: 34px;
+  height: 5px;
+  border: 2px solid;
+  border-color: #ffffff #4c5858 #4c5858 #ffffff;
+  background: #c6d5d3;
+}
+
+.trash-can-art::after {
+  content: "";
+  position: absolute;
+  top: -11px;
+  left: 8px;
+  width: 10px;
+  height: 3px;
+  border: 2px solid;
+  border-color: #ffffff #4c5858 #4c5858 #ffffff;
+  background: #c6d5d3;
+}
+
+.desktop-link-shortcut .desktop-shortcut-icon img {
+  width: 38px;
+  height: 38px;
+  display: block;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.desktop-shortcut[data-app-id="github"] .desktop-shortcut-icon {
+  background: #eeeeee;
+}
+
+.desktop-shortcut[data-app-id="linkedin"] .desktop-shortcut-icon {
+  background: #d5e9f0;
+}
+
+.desktop-shortcut-label {
+  max-width: 82px;
+  padding: 2px 5px 3px;
+  border-radius: 2px;
   font-size: 12px;
   font-weight: 600;
-  cursor: pointer;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  border-radius: 6px;
-  z-index: 200;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: all 0.15s ease;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  text-shadow:
+    1px 1px 1px rgba(0, 0, 0, 0.96),
+    -1px 0 1px rgba(0, 0, 0, 0.8);
 }
 
-.logout-btn:hover {
-  background: linear-gradient(to bottom, #F8F8F8, #EFEFEF);
-  border-color: #0078D7;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  transform: translateY(-1px);
+.desktop-shortcut:hover .desktop-shortcut-label,
+.desktop-shortcut:focus-visible .desktop-shortcut-label {
+  background: var(--accent-dark);
 }
 
-.logout-btn:active {
-  background: linear-gradient(to bottom, #0078D7, #005BA3);
+.about-menu-backdrop {
+  position: fixed;
+  inset: 0 0 var(--taskbar-height);
+  z-index: 149;
+  border: 0;
+  background: transparent;
+  cursor: default;
+}
+
+.about-menu {
+  position: fixed;
+  left: 8px;
+  bottom: calc(var(--taskbar-height) + 8px);
+  z-index: 150;
+  width: min(430px, calc(100vw - 16px));
+  max-height: calc(100dvh - var(--taskbar-height) - 22px);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  border: 2px solid;
+  border-color: #ffffff #404040 #404040 #ffffff;
+  border-radius: 0;
+  background: #c0c0c0;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.35);
+  text-align: left;
+  font-family: var(--font-ui);
+}
+
+.about-menu-titlebar {
+  min-height: 48px;
+  padding: 7px 8px 7px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2px 2px 0;
+  border-bottom: 0;
+  background: #006b6b;
   color: #ffffff;
-  transform: translateY(0);
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
+}
+
+.about-menu-titlebar button {
+  width: 34px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 2px solid;
+  border-color: #ffffff #404040 #404040 #ffffff;
+  border-radius: 0;
+  background: #c0c0c0;
+  color: #111111;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.about-menu-titlebar button:hover,
+.about-menu-titlebar button:focus-visible {
+  border-color: #ffffff #404040 #404040 #ffffff;
+  outline: 1px dotted #111111;
+  outline-offset: -4px;
+  background: #d0d0d0;
+}
+
+.about-menu-content {
+  min-height: 0;
+  margin: 2px;
+  padding: 12px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  border: 2px solid;
+  border-color: #707070 #ffffff #ffffff #707070;
+  background: #eeeeee;
+  -webkit-overflow-scrolling: touch;
+}
+
+.about-app {
+  color: #171717;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.about-system-summary {
+  padding: 2px 3px 10px;
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  align-items: center;
+  gap: 11px;
+  border-bottom: 1px solid #9a9a9a;
+  box-shadow: 0 1px 0 #ffffff;
+}
+
+.about-owner-photo-frame {
+  width: 58px;
+  height: 58px;
+  padding: 3px;
+  border: 2px solid;
+  border-color: #404040 #ffffff #ffffff #404040;
+  background: #c0c0c0;
+  box-shadow: inset 1px 1px 0 #808080;
+}
+
+.about-owner-photo {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: 50% 28%;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.about-system-identity {
+  min-width: 0;
+}
+
+.about-machine-name {
+  margin: 0;
+  color: #006b6b;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+}
+
+.about-system-identity h2 {
+  margin: 3px 0 4px;
+  color: #111111;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 650;
+  line-height: 1.05;
+}
+
+.about-system-description {
+  margin: 0;
+  color: #4d565e;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.about-group {
+  min-width: 0;
+  margin: 10px 0 0;
+  padding: 8px 8px 7px;
+  border: 1px solid #808080;
+  border-radius: 0;
+  box-shadow: inset 1px 1px 0 #ffffff;
+}
+
+.about-group legend {
+  margin-left: 5px;
+  padding: 0 5px;
+  color: #263535;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.about-properties {
+  display: grid;
+  gap: 0;
+}
+
+.about-property {
+  min-width: 0;
+  padding: 4px;
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  gap: 8px;
+  border-bottom: 1px dotted #b0b0b0;
+}
+
+.about-property:last-child {
+  border-bottom: 0;
+}
+
+.about-property dt {
+  color: #586169;
+  font-weight: 600;
+}
+
+.about-property dd {
+  min-width: 0;
+  margin: 0;
+  color: #141414;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.about-status {
+  min-height: 26px;
+  padding: 4px 7px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 9px;
+  overflow: hidden;
+  border: 1px solid;
+  border-color: #707070 #ffffff #ffffff #707070;
+  background: #dfdfdf;
+  color: #3f4d4d;
+  font-size: 10px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.about-status > span {
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  border: 1px solid #0f7c50;
+  border-radius: 50%;
+  background: #2cd88b;
+  box-shadow: 0 0 0 3px rgba(44, 216, 139, 0.15);
+}
+
+.about-menu-footer {
+  padding: 10px 12px;
+  display: flex;
+  justify-content: flex-end;
+  background: #c0c0c0;
+  box-shadow: inset 0 1px 0 #ffffff;
+}
+
+.about-menu-logout {
+  min-height: 34px;
+  padding: 6px 15px;
+  border: 2px solid;
+  border-color: #ffffff #404040 #404040 #ffffff;
+  border-radius: 0;
+  background: #c0c0c0;
+  color: #26313d;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: var(--shadow-raised);
+}
+
+.about-menu-logout::before {
+  content: "⏻";
+  margin-right: 7px;
+  color: #a71f2a;
+}
+
+.about-menu-logout:hover,
+.about-menu-logout:focus-visible {
+  border-color: #ffffff #404040 #404040 #ffffff;
+  outline: 1px dotted #111111;
+  outline-offset: -4px;
+  background: #d0d0d0;
+}
+
+.about-menu-logout:active {
+  transform: translateY(1px);
+  border-color: #404040 #ffffff #ffffff #404040;
+  box-shadow: none;
 }
 
 .windows-container {
   position: relative;
   width: 100%;
   height: 100%;
-  flex: 1;
+}
+
+@media (max-height: 470px) {
+  .desktop-shortcuts {
+    grid-template-rows: repeat(2, minmax(90px, auto));
+  }
+
+  .about-menu-content {
+    padding: 9px;
+  }
+}
+
+@media (max-width: 520px) {
+  .desktop-area {
+    padding: 8px;
+  }
+
+  .desktop-shortcuts {
+    top: 12px;
+    left: 8px;
+    gap: 2px;
+  }
+
+  .desktop-shortcut {
+    width: 78px;
+  }
+
+  .desktop-shortcut-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 27px;
+  }
+
+  .desktop-trash-shortcut {
+    right: 8px;
+    bottom: 8px;
+  }
+
+  .about-menu {
+    right: 8px;
+    width: auto;
+  }
+
+  .about-system-summary {
+    grid-template-columns: 58px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .about-owner-photo-frame {
+    width: 58px;
+    height: 58px;
+  }
+
+  .about-system-identity h2 {
+    font-size: 19px;
+  }
+
+  .about-property {
+    grid-template-columns: 100px minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 360px) {
+  .about-menu-content {
+    padding: 9px;
+  }
+
+  .about-property {
+    grid-template-columns: 1fr;
+    gap: 1px;
+  }
+
 }

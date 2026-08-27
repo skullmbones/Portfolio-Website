@@ -1,18 +1,124 @@
+@font-face {
+  font-family: "Terminus";
+  src: url("/fonts/TerminusTTF-4.49.3.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 400;
+}
+
+:root {
+  color-scheme: light;
+  font-family: "Segoe UI Variable", "Segoe UI", Tahoma, Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  --font-ui: "Segoe UI Variable", "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-heading: "Segoe UI Variable Display", "Segoe UI", Tahoma, Arial, sans-serif;
+  --font-mono: "Terminus", "Cascadia Mono", "Courier New", monospace;
+
+  --desktop-deep: #00383a;
+  --desktop-teal: #008080;
+  --desktop-aqua: #52d7d1;
+  --accent: #087f83;
+  --accent-dark: #00585c;
+  --accent-soft: #d8efee;
+  --danger: #d92d3a;
+  --success: #22a06b;
+  --ink: #17202b;
+  --ink-muted: #647080;
+  --surface: #c0c0c0;
+  --surface-raised: #dfdfdf;
+  --surface-inset: #a8a8a8;
+  --line: #808080;
+  --line-dark: #404040;
+  --line-light: #ffffff;
+  --focus: #32d5cf;
+  --taskbar-height: 58px;
+
+  --radius-sm: 0;
+  --radius-md: 1px;
+  --radius-lg: 2px;
+  --shadow-window:
+    6px 6px 0 rgba(0, 0, 0, 0.28),
+    1px 1px 0 rgba(0, 0, 0, 0.36);
+  --shadow-raised:
+    inset 1px 1px 0 #ffffff,
+    inset -1px -1px 0 #505050;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
-  width: 100%;
-  height: 100%;
-  font-family: 'MS Sans Serif', Arial, sans-serif;
-}
-
+html,
+body,
 #root {
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
+  min-width: 280px;
+}
+
+body {
+  overflow: hidden;
+  color: var(--ink);
+  background: var(--desktop-deep);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+::selection {
+  color: #ffffff;
+  background: var(--accent);
+}
+
+::-webkit-scrollbar {
+  width: 13px;
+  height: 13px;
+}
+
+::-webkit-scrollbar-track {
+  background: #dfe3e7;
+  border-left: 1px solid #bdc4cb;
+}
+
+::-webkit-scrollbar-thumb {
+  min-height: 28px;
+  border: 3px solid #dfe3e7;
+  border-radius: 0;
+  background: #8c98a5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #687583;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

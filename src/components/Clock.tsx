@@ -12,11 +12,20 @@ function Clock() {
   }, []);
 
   return (
-    <time dateTime={time.toISOString()}>
-      {time.toLocaleTimeString([], {
-        hour: "numeric",
-        minute: "2-digit",
-      })}
+    <time className="taskbar-clock" dateTime={time.toISOString()}>
+      <span>
+        {time.toLocaleTimeString([], {
+          hour: "numeric",
+          minute: "2-digit",
+        })}
+      </span>
+      <span>
+        {time.toLocaleDateString([], {
+          month: "numeric",
+          day: "numeric",
+          year: "2-digit",
+        })}
+      </span>
     </time>
   );
 }

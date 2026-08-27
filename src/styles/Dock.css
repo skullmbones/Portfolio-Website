@@ -1,99 +1,251 @@
 .dock {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 48px;
-    z-index: 10;
-    background: linear-gradient(to bottom, #FFFFFF 0%, #F8F8F8 100%);
-    border-top: 1px solid #D0D0D0;
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    padding: 4px 4px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 300;
+  width: 100%;
+  height: var(--taskbar-height);
+  padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
+  border-top: 2px solid #ffffff;
+  background: #c0c0c0;
+  box-shadow: inset 0 1px 0 #dfdfdf, 0 -1px 0 #404040;
 }
 
 .dock-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100%;
-  width: 100%;
+}
+
+.dock-start {
   position: relative;
-  padding: 0 4px;
+  z-index: 2;
+  height: 100%;
+  padding-right: 11px;
+  display: flex;
+  align-items: center;
+}
+
+.dock-start::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  right: 0;
+  bottom: 7px;
+  width: 1px;
+  background: rgba(82, 95, 106, 0.25);
+  box-shadow: 1px 0 0 rgba(255, 255, 255, 0.58);
 }
 
 .dock-apps {
   position: absolute;
-  left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  left: 50%;
+  z-index: 1;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  height: 100%;
-  z-index: 1;
+  gap: 5px;
+  transform: translate(-50%, -50%);
 }
 
 .dock-app-wrapper {
   position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.dock-app-wrapper .minimized-indicator {
-  width: 4px;
-  height: 4px;
-  background: #000000;
-  border-radius: 50%;
-  position: absolute;
-  bottom: -6px;
-}
-
-.dock-apps button {
-  height: 40px;
+.dock-app-button {
+  position: relative;
   width: 44px;
+  height: 44px;
+  padding: 0;
   display: grid;
   place-items: center;
-  background: linear-gradient(to bottom, #FFFFFF, #F5F5F5);
-  border: 1px solid #D0D0D0;
+  overflow: hidden;
+  border: 2px solid;
+  border-color: #ffffff #404040 #404040 #ffffff;
+  border-radius: 0;
+  background: #c0c0c0;
+  color: #111a22;
   cursor: pointer;
-  transition: all 0.15s ease;
-  font-size: 18px;
-  color: #000000;
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  box-shadow: inset 1px 1px 0 #dfdfdf;
+  transition:
+    transform 120ms ease,
+    background 120ms ease,
+    border-color 120ms ease,
+    box-shadow 120ms ease;
 }
 
-.dock-apps button.minimized {
-  background: linear-gradient(to bottom, #0078D7, #005BA3);
-  color: #ffffff;
-  border-color: #005BA3;
-  box-shadow: 0 2px 6px rgba(0, 120, 215, 0.3);
+.dock-app-button::before {
+  display: none;
 }
 
-.dock-apps button:hover {
-  background: linear-gradient(to bottom, #F8F8F8, #EFEFEF);
-  border-color: #0078D7;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-  transform: translateY(-1px);
+.dock-app-icon {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.65));
 }
 
-.dock-apps button:active {
-  background: linear-gradient(to bottom, #0078D7, #005BA3);
-  color: #ffffff;
+.dock-app-button[data-app-id="terminal"] .dock-app-icon {
+  color: #124a35;
+  font-family: var(--font-mono);
+  font-size: 15px;
+}
+
+.dock-app-button[data-app-id="music"] .dock-app-icon {
+  color: #4d3288;
+  font-size: 27px;
+}
+
+.dock-app-button[data-app-id="docs"] .dock-app-icon {
+  color: #087579;
+  font-size: 25px;
+}
+
+.dock-app-button[data-app-id="email"] .dock-app-icon {
+  color: #006b6b;
+  font-family: var(--font-ui);
+  font-size: 25px;
+}
+
+.dock-start-button .dock-app-icon {
+  font-family: var(--font-ui);
+  font-size: 27px;
+  font-weight: 400;
+}
+
+.dock-start-icon-image {
+  width: 36px;
+  height: 36px;
+  display: block;
+  object-fit: contain;
+  image-rendering: pixelated;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.dock-app-button:hover,
+.dock-app-button:focus-visible {
+  border-color: #ffffff #404040 #404040 #ffffff;
+  outline: 1px dotted #202020;
+  outline-offset: -5px;
+  background: #d1d1d1;
+  box-shadow: inset 1px 1px 0 #f0f0f0;
+  transform: none;
+}
+
+.dock-app-button.active {
+  border-color: #404040 #ffffff #ffffff #404040;
+  background: #a9d0ce;
+  box-shadow: inset 1px 1px 1px #707070;
+}
+
+.dock-app-button.minimized {
+  background: #b2b2b2;
+  filter: saturate(0.72);
+}
+
+.dock-app-button:active {
   transform: translateY(0);
+  border-color: #404040 #ffffff #ffffff #404040;
+  box-shadow: inset 1px 1px 1px #707070;
 }
 
-.dock time {
-  margin-left: auto;
-  padding-right: 8px;
+.dock-start-button {
+  border-color: #ffffff #404040 #404040 #ffffff;
+  background: #c0c0c0;
+  color: #006b6b;
+}
+
+.dock-start-button .dock-app-icon {
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.35));
+}
+
+.dock-start-button:hover,
+.dock-start-button:focus-visible,
+.dock-start-button.active {
+  border-color: #404040 #ffffff #ffffff #404040;
+  background: #8fc4c1;
+}
+
+.dock-app-indicator {
+  position: absolute;
+  right: 10px;
+  bottom: 2px;
+  left: 10px;
+  z-index: 3;
+  height: 3px;
+  border-radius: 0;
+  background: var(--accent);
+  box-shadow: 0 0 5px rgba(8, 127, 131, 0.45);
+}
+
+.dock-app-indicator.minimized {
+  right: 17px;
+  left: 17px;
+  background: #677482;
+  box-shadow: none;
+}
+
+.taskbar-clock {
+  position: relative;
   z-index: 2;
-  color: #424242;
-  font-weight: 500;
-  font-size: 12px;
-  font-family: 'Segoe UI', Arial, sans-serif;
+  min-width: 76px;
+  height: 42px;
+  padding: 4px 9px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  border: 2px solid;
+  border-color: #707070 #ffffff #ffffff #707070;
+  border-radius: 0;
+  background: #c0c0c0;
+  color: #26333e;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.3;
+  cursor: default;
+}
+
+.taskbar-clock:hover {
+  border-color: #707070 #ffffff #ffffff #707070;
+  background: #c8c8c8;
+}
+
+@media (max-width: 480px) {
+  .dock {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+
+  .dock-apps {
+    gap: 2px;
+  }
+
+  .dock-app-button {
+    width: 42px;
+  }
+
+  .taskbar-clock {
+    min-width: 56px;
+    padding-right: 3px;
+    padding-left: 3px;
+  }
+
+  .taskbar-clock span:last-child {
+    display: none;
+  }
 }

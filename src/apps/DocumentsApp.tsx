@@ -20,32 +20,8 @@ const documents: DocumentItem[] = [
     size: "1.2 MB",
     description: "A polished one-page resume for professional work and freelance opportunities.",
     content: "Resume content placeholder. Replace this with your real resume text later.",
-    path: "/files/resume.pdf",
+    path: "/files/Babboni - Resume SWE 2026.pdf",
     imagePath: "/img/resume.png",
-  },
-  {
-    id: 2,
-    name: "portfolio.pdf",
-    type: "PDF",
-    size: "2.4 MB",
-    description: "A curated portfolio of recent projects, case studies, and design work.",
-    content: "Portfolio content placeholder. Replace this with your real project overview later.",
-  },
-  {
-    id: 3,
-    name: "references.txt",
-    type: "TXT",
-    size: "42 KB",
-    description: "A placeholder notes file for references, contacts, and quick access info.",
-    content: "Reference notes placeholder. Add your contact details or links here.",
-  },
-  {
-    id: 4,
-    name: "cover-letter.docx",
-    type: "DOCX",
-    size: "780 KB",
-    description: "A draft cover letter template ready to customize for new opportunities.",
-    content: "Cover letter placeholder. Replace this with your real letter text later.",
   },
 ];
 
@@ -54,8 +30,8 @@ const getResumeWindowSize = () => {
     return { width: 760, height: 980 };
   }
 
-  const maxWidth = Math.min(920, window.innerWidth - 120);
-  const maxHeight = Math.min(1120, window.innerHeight - 120);
+  const maxWidth = Math.max(260, Math.min(920, window.innerWidth - 32));
+  const maxHeight = Math.max(180, Math.min(1120, window.innerHeight - 82));
   const aspectRatio = 8.5 / 11;
 
   let width = maxWidth;
@@ -81,14 +57,15 @@ function DocumentsApp() {
 
     const size = getResumeWindowSize();
     return {
-      x: Math.max(40, Math.round((window.innerWidth - size.width) / 2)),
-      y: Math.max(40, Math.round((window.innerHeight - size.height) / 2)),
+      x: Math.max(8, Math.round((window.innerWidth - size.width) / 2)),
+      y: Math.max(8, Math.round((window.innerHeight - 58 - size.height) / 2)),
     };
   });
   const [windowSize, setWindowSize] = useState(getResumeWindowSize);
   const [isMinimized, setIsMinimized] = useState(false);
 
   const handleOpenDocument = (doc: DocumentItem) => {
+    setIsMinimized(false);
     if (doc.name === "resume.pdf" && doc.path && doc.imagePath) {
       setActiveDoc(doc);
       return;
@@ -99,7 +76,13 @@ function DocumentsApp() {
 
   return (
     <div className="app-content documents-app">
-
+      <div className="documents-toolbar">
+        <div>
+          <p className="documents-eyebrow">This PC / Documents</p>
+          <h2>Documents</h2>
+        </div>
+        <span className="documents-count">{documents.length} item</span>
+      </div>
       <div className="documents-grid" role="list">
         {documents.map((doc) => (
           <button
@@ -107,11 +90,14 @@ function DocumentsApp() {
             type="button"
             className="document-card"
             onClick={() => handleOpenDocument(doc)}
+            aria-label={`Open ${doc.name}`}
           >
-            <div className="document-preview" aria-hidden="true" />
+            <div className="document-preview" aria-hidden="true">
+              <span>PDF</span>
+            </div>
             <div className="document-info">
               <strong>{doc.name}</strong>
-              <span>{doc.type}</span>
+              <span>{doc.type} · {doc.size}</span>
             </div>
           </button>
         ))}
