@@ -134,7 +134,7 @@ const PROJECTS: Record<ProjectId, Project> = {
       },
     ],
     summary:
-      "A game jam project where players navigate traffic by avoiding obstacles on beat.",
+      "A rythym-based game jam project where players navigate traffic by avoiding obstacles on beat.",
   },
   rooted: {
     id: "rooted",
