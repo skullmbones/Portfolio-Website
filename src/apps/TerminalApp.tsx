@@ -72,7 +72,7 @@ const PROJECTS: Record<ProjectId, Project> = {
       },
     ],
     summary:
-      "A polished portfolio experience with terminal navigation and a custom desktop feel.",
+      "A polished portfolio designed to feel like the user is navigating through my personal computer. The website pulls inspiration from retro operating systems and includes a multitude of apps all encompasing different aspects of my work and experience.",
   },
   jlc: {
     id: "jlc",
@@ -96,7 +96,7 @@ const PROJECTS: Record<ProjectId, Project> = {
       },
     ],
     summary:
-      "A community-first social platform built around collaboration, identity, and simple interaction.",
+      "An website I am currently working on for my friend's content strategy business. The website is designed to be a simple, yet effective way to showcase their services and portfolio.",
   },
   adventure_catalyst: {
     id: "adventure_catalyst",
@@ -134,7 +134,7 @@ const PROJECTS: Record<ProjectId, Project> = {
       },
     ],
     summary:
-      "A rythym-based game jam project where players navigate traffic by avoiding obstacles on beat.",
+      "A rythym-based game jam project where players navigate traffic by avoiding obstacles on beat to '9-5' by Dolly Parton",
   },
   rooted: {
     id: "rooted",
@@ -512,9 +512,9 @@ function TerminalApp() {
 
       case "whoami":
         output = [
-          { text: "michaelbabboni", kind: "title" },
-          { text: "Full-stack developer" },
-          { text: "TypeScript · React · Node.js" },
+          { text: "Michael Babboni", kind: "title" },
+          { text: "Full-stack/Web/App/Game Developer" },
+          { text: "TypeScript · React · Java" },
         ];
         break;
 

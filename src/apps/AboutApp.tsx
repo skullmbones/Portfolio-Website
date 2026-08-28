@@ -1,8 +1,9 @@
 const SYSTEM_PROPERTIES = [
-  ["Registered owner", "Michael Babboni"],
+  ["Owner", "Michael Babboni"],
   ["Education", "Rutgers University–New Brunswick"],
-  ["Major", "Computer Science"],
+  ["Degree", "Bachelor of Computer Science, May 2026"],
   ["Location", "North Jersey / New York City"],
+  ["Current Job", "Host/Server at Franklin Steakhouse and Tavern"]
 ] as const;
 
 function AboutApp() {
@@ -37,7 +38,7 @@ function AboutApp() {
 
       <div className="about-status" role="status">
         <span aria-hidden="true" />
-        Available for new opportunities
+        Actively looking for new opportunities.
       </div>
     </div>
   );
